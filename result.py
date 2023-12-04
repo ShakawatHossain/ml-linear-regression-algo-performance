@@ -48,6 +48,7 @@ class Regularizer:
         zero_columns_train = X_train_lasso.columns[(X_train_lasso == 0).all()]
         X_train_lasso.drop(zero_columns_train, axis=1, inplace=True)
         X_test_lasso = self.X_test_scaled * coefficients
+        #X_train_scaled can be initialize to X_train_lasso to remove those columns eliminated by Lasso
         X_test_lasso = pd.DataFrame(X_test_lasso)
         zero_columns_test = X_test_lasso.columns[(X_test_lasso == 0).all()]
         X_test_lasso.drop(zero_columns_test, axis=1, inplace=True)
